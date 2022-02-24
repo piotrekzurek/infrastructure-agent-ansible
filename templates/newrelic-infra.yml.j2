@@ -5,3 +5,12 @@
 {% if nrinfragent_license_key is defined %}
 license_key: {{ nrinfragent_license_key }}
 {% endif %}
+
+{% if nrinfragent_config.custom_attributes is defined %}
+custom_attributes:
+{%- for dict_item in nrinfragent_config.custom_attributes %}
+{%- for key, value in dict_item.items() %}
+  {{ key }}: {{ value }}
+{%- endfor -%}
+{% endfor -%}
+{% endif -%}
